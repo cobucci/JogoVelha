@@ -68,7 +68,7 @@ public class TicTacToe {
                 return false;
             }
             
-           if(turn == 8){
+           if(turn >= 7){
                
     
                if(board.checkDraw(-1) && board.checkDraw(1)){
@@ -77,13 +77,6 @@ public class TicTacToe {
                }
            }
             
-            if(turn == 9){
-              
-                if(board.checkDraw(-1)){
-                    System.out.println("DEU VELHA MALUCO!!");
-                    return false;
-                }   
-            }
              
             System.out.println("----------------------");
             System.out.println("\nTurn "+turn);
