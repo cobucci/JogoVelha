@@ -19,7 +19,7 @@ public class Board {
     public void clearBoard(){
         for(int line=0 ; line<3 ; line++)
             for(int column=0 ; column<3 ; column++)
-                Board[line][column]=0;
+                getBoard()[line][column]=0;
     }
      
     public void showBoard(){
@@ -28,13 +28,13 @@ public class Board {
          
             for(int column=0 ; column<3 ; column++){
                  
-                if(Board[line][column]==-1){
+                if(getBoard()[line][column]==-1){
                     System.out.print(" X ");
                 }
-                if(Board[line][column]==1){
+                if(getBoard()[line][column]==1){
                     System.out.print(" O ");
                 }
-                if(Board[line][column]== 0){
+                if(getBoard()[line][column]== 0){
                     System.out.print("   ");
                 }
                  
@@ -47,22 +47,22 @@ public class Board {
     }
  
     public int getPosition(int[] attempt){
-        return Board[attempt[0]][attempt[1]];
+        return getBoard()[attempt[0]][attempt[1]];
     }
      
     public void setPosition(int[] attempt, int player){
         if(player == 1)
-            Board[attempt[0]][attempt[1]] = -1;
+            getBoard()[attempt[0]][attempt[1]] = -1;
         else
-            Board[attempt[0]][attempt[1]] = 1;
+            getBoard()[attempt[0]][attempt[1]] = 1;
     }
  
     public int checkLines(){
         for(int line=0 ; line<3 ; line++){
  
-            if( (Board[line][0] + Board[line][1] + Board[line][2]) == -3)
+            if( (getBoard()[line][0] + getBoard()[line][1] + getBoard()[line][2]) == -3)
                 return -1;
-            if( (Board[line][0] + Board[line][1] + Board[line][2]) == 3)
+            if( (getBoard()[line][0] + getBoard()[line][1] + getBoard()[line][2]) == 3)
                 return 1;
         }
          
@@ -76,7 +76,7 @@ public class Board {
         
            for(int i=0 ; i<3 ; i++){
                //System.out.printf("COMPARANDO b = %d -- who = %d\n", Board[i][coluna], who); 
-               if(Board[i][coluna] == who){
+               if(getBoard()[i][coluna] == who){
                     contador++;
                 } 
             }
@@ -90,7 +90,7 @@ public class Board {
            contador = 0;
            for(int i=0 ; i<3 ; i++){
                //System.out.printf("COMPARANDO b = %d -- who = %d\n", Board[linha][i], who);
-                if(Board[linha][i] == who){
+                if(getBoard()[linha][i] == who){
                     contador++;
                 } 
             }
@@ -108,12 +108,13 @@ public class Board {
      
     public int verificarDiagonal(int linha, int coluna, int who){
          
-        int contador=0, i=0, aux=2;
-         
-         
+        int contador=0; 
+         int i=0;
+         int aux=2;
+                 
             if(linha == 0 && coluna == 0 || linha == 2 && coluna == 2){
                 for(i=0 ; i<3 ; i++){
-                    if(Board[i][i] == who){
+                    if(getBoard()[i][i] == who){
                         contador++;
                     }
                 }
@@ -130,7 +131,7 @@ public class Board {
             
             else if(linha == 2 && coluna == 0 || linha == 0 && coluna == 2){
                 for(i=0 ; i<3 ; i++){
-                    if(Board[i][aux-i] == who){
+                    if(getBoard()[i][aux-i] == who){
                         contador++;
                     }
                 }
@@ -147,7 +148,7 @@ public class Board {
              
             else if(linha == 1 && coluna == 1){
                 for(i=0 ; i<3 ; i++){
-                    if(Board[i][i] == who){
+                    if(getBoard()[i][i] == who){
                         contador++;
                     }
                 }
@@ -157,7 +158,7 @@ public class Board {
                 
                 contador = 0;
                 for(i=0 ; i<3 ; i++){
-                    if(Board[i][aux-i] == who){
+                    if(getBoard()[i][aux-i] == who){
                         contador++;
                     }
                 }
@@ -176,12 +177,13 @@ public class Board {
      
     public boolean checkDraw(int who){
         int posicao;
-        int linhaVelha, colunaVelha;
-        int contador=0, verificadorDeVelha=0;
+        int linhaVelha;
+        int colunaVelha;
+        int contador=0;
          
         for (int linha = 0; linha < 3; linha++) {
             for (int coluna = 0; coluna < 3; coluna++) {
-                if (Board[linha][coluna] == 0){
+                if (getBoard()[linha][coluna] == 0){
                     
                         contador=0;
                         linhaVelha = linha; // NAO PRECISAVA TER FEITO ISSO, MAS TO COM PREGUICA DE APAGAR AS PARADAS
@@ -223,9 +225,9 @@ public class Board {
     public int checkColumns(){
         for(int column=0 ; column<3 ; column++){
  
-            if( (Board[0][column] + Board[1][column] + Board[2][column]) == -3)
+            if( (getBoard()[0][column] + getBoard()[1][column] + getBoard()[2][column]) == -3)
                 return -1;
-            if( (Board[0][column] + Board[1][column] + Board[2][column]) == 3)
+            if( (getBoard()[0][column] + getBoard()[1][column] + getBoard()[2][column]) == 3)
                 return 1;
         }
          
@@ -234,13 +236,13 @@ public class Board {
     }
      
     public int checkDiagonals(){
-        if( (Board[0][0] + Board[1][1] + Board[2][2]) == -3)
+        if( (getBoard()[0][0] + getBoard()[1][1] + getBoard()[2][2]) == -3)
             return -1;
-        if( (Board[0][0] + Board[1][1] + Board[2][2]) == 3)
+        if( (getBoard()[0][0] + getBoard()[1][1] + getBoard()[2][2]) == 3)
             return 1;
-        if( (Board[0][2] + Board[1][1] + Board[2][0]) == -3)
+        if( (getBoard()[0][2] + getBoard()[1][1] + getBoard()[2][0]) == -3)
             return -1;
-        if( (Board[0][2] + Board[1][1] + Board[2][0]) == 3)
+        if( (getBoard()[0][2] + getBoard()[1][1] + getBoard()[2][0]) == 3)
             return 1;
          
         return 0;
@@ -249,7 +251,7 @@ public class Board {
     public boolean fullBoard(){
         for(int line=0 ; line<3 ; line++)
             for(int column=0 ; column<3 ; column++)
-                if( Board[line][column]==0 )
+                if( getBoard()[line][column]==0 )
                     return false;
         return true;
     }
@@ -368,6 +370,20 @@ public class Board {
         }
         
         return attempt;
+    }
+
+    /**
+     * @return the Board
+     */
+    public int[][] getBoard() {
+        return Board;
+    }
+
+    /**
+     * @param Board the Board to set
+     */
+    public void setBoard(int[][] Board) {
+        this.Board = Board;
     }
 }
 
