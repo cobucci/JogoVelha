@@ -70,23 +70,16 @@ public class TicTacToe {
             
            if(turn == 8){
                
-               boolean deuVelha1 = false;
-               deuVelha1 = board.checkDraw(-1);
-               boolean deuVelha2 = false;
-               deuVelha2 = board.checkDraw(1);
-               if(deuVelha1 == true && deuVelha2 == true){
+    
+               if(board.checkDraw(-1) && board.checkDraw(1)){
                    System.out.println("DEU VELHA MALUCO!!");
                     return false;
                }
            }
             
             if(turn == 9){
-                //System.out.println("Entrou menoor");
-               
-                //System.out.printf("%d\n", quemJoga);
-                boolean deuVelha = false;
-                deuVelha = board.checkDraw(-1);
-                if(deuVelha == true){
+              
+                if(board.checkDraw(-1)){
                     System.out.println("DEU VELHA MALUCO!!");
                     return false;
                 }   
