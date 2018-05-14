@@ -176,7 +176,7 @@ public class Board {
      
      
     public boolean checkDraw(int who){
-        int posicao;
+      
         int linhaVelha;
         int colunaVelha;
         int contador=0;
