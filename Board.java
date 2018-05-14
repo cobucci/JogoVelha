@@ -354,17 +354,17 @@ public class Board {
         }
         
         int[] attempt = new int[4];
-        boolean flag = true;
+//        boolean flag = true;
         
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 
-                if(board.getPosition(new int[] {i,j}) == 0 && flag == true){
+                if(board.getPosition(new int[] {i,j}) == 0){
                     attempt[0] = i;
                     attempt[1] = j;
                     attempt[2] = 0;
                     attempt[3] = -INF;
-                    flag = false;
+                    return attempt;
                 }
             }
         }
